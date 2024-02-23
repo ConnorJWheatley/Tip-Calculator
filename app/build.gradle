@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.connorjwheatley12.tippy'
-    compileSdk 32
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.connorjwheatley12.tippy"
         minSdk 21
-        targetSdk 32
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 

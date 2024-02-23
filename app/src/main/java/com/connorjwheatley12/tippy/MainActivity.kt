@@ -108,22 +108,12 @@ class MainActivity : AppCompatActivity() {
         val tipAmount = baseAmount * tipPercent / 100
 
         if (roundTip) {
-            val tipAmountString = tipAmount.toString()
-            Log.i(TAG, "$tipAmountString here is the original tip amount")
-            val tipAmountSplit = tipAmountString.split(".")
-            val tipDecimalAmountString = tipAmountSplit[1].toString()
-            val tipDecimalAmount = tipDecimalAmountString.take(3)
-
-            val tempDecimalRounded = String.format("%.2f", ("0.$tipDecimalAmount").toDouble())
-            val tempDecimalToInteger = tempDecimalRounded.toDouble() * 100
-            val tipDecimalRoundedToTen = (round(tempDecimalToInteger / 10.0) * 10).toString().take(2)
-
-            val finalTipAmount = tipAmountSplit[0] + "." + tipDecimalRoundedToTen
-            Log.i(TAG, "$finalTipAmount here is the new and final tip amount")
-            val totalAmount = baseAmount + finalTipAmount.toDouble()
+            val roundedTipAmount = String.format("%.1f", tipAmount)
+            val roundedTipAmountTwoDecimal = roundedTipAmount + "0"
+            val totalAmount = baseAmount + roundedTipAmountTwoDecimal.toDouble()
 
             // 3a. Update the UI
-            tvTipAmount.text = finalTipAmount
+            tvTipAmount.text = roundedTipAmountTwoDecimal
             tvTotalAmount.text = String.format("%.2f", totalAmount)
         } else {
             val totalAmount = baseAmount + tipAmount
